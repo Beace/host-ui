@@ -13,7 +13,7 @@ const entryPoints = {
   index: './src/components/index.js',
 };
 fs.readdirSync(componentsPath)
-  .filter(x => x !== '.DS_Store' && x !== 'index.js' && !x.match(/\.md/))
+  .filter(x => x !== '.DS_Store' && x !== 'index.js' && !x.match(/\.md/) && !x.match(/style/))
   .forEach((component) => {
     entryPoints[component] = [`./src/components/${component}`];
   });

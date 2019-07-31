@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 
 import './index.less';
 
-const Button = ({ type, inline, children, ...rest }) => {
+const Button = ({
+  type, inline, children, ...rest
+}) => {
   const cls = classNames({
     'hu-btn': true,
     'hu-btn-primary': type === 'primary',
