@@ -4,7 +4,12 @@ export default {
   themeConfig: {
     mode: 'dark',
   },
-  menu: ['Getting Started', 'Input', 'Button'],
+  menu: ['Getting Started', 'Button'],
+  htmlContext: {
+    head: {
+      raw: '<style>button{margin-right:16px}</style>',
+    },
+  },
   modifyBundlerConfig: (config) => {
     config.module.rules.push({
       test: /\.less$/,

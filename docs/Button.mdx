@@ -2,14 +2,21 @@
 name: Button
 ---
 
-import { Playground } from 'docz'
-import Button from '../src/components/Button'
+import { Props, Playground } from 'docz'
+import Button from '../src/components/button'
 
 # Button
 
 ## Basic usage
 
 <Playground>
-  <Button>Click me</Button>
-  <Button kind="secondary">Click me</Button>
+  <div style={{ marginBottom: 20 }}>
+  <Button style={{ marginRight: 20 }}>Button normal</Button>
+  <Button type="primary">Button primary</Button>
+  </div>
+  <Button type="primary" inline={false}>Button block</Button>
 </Playground>
+
+
+## Props
+<Props of={Button} />
