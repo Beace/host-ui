@@ -25,6 +25,7 @@ module.exports = {
     filename: '[name]/index.js',
     publicPath: '/dist/',
     library: 'hostui',
+    libraryTarget: 'commonjs2',
   },
   resolve: {
     modules: ['node_modules', path.resolve(__dirname, 'lib/index')],
@@ -73,7 +74,7 @@ module.exports = {
   ],
   target: 'web',
   externals: {
-    react: 'React',
+    react: 'react',
     'react-dom': 'ReactDOM',
   },
   mode: 'production',
