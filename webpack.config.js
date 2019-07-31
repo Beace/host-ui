@@ -73,7 +73,7 @@ module.exports = {
   ],
   target: 'web',
   externals: {
-    react: 'react',
+    react: 'React',
     'react-dom': 'ReactDOM',
   },
   mode: 'production',
