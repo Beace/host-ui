@@ -1,3 +1,5 @@
 node_modules
 lib
 .docz
+.DS_Store
+package-lock.json
