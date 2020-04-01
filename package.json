@@ -6,7 +6,9 @@
   "scripts": {
     "start": "docz dev",
     "docz:build": "docz build",
-    "build": "rm -rf lib && NODE_ENV=production webpack"
+    "build": "rm -rf lib && NODE_ENV=production webpack",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -31,10 +33,19 @@
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/preset-env": "7.5.5",
     "@babel/preset-react": "7.0.0",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-backgrounds": "^5.3.18",
+    "@storybook/addon-centered": "^5.3.18",
+    "@storybook/addon-contexts": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-storysource": "^5.3.18",
+    "@storybook/addon-viewport": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "@storybook/source-loader": "^5.3.18",
     "babel-loader": "8.0.6",
     "css-loader": "^3.1.0",
-    "docz": "latest",
-    "docz-theme-default": "^1.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-loader": "2.2.1",
