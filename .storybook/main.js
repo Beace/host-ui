@@ -4,9 +4,9 @@ module.exports = {
   stories: ['../src/stories/**/*.stories.js'],
   addons: [
     '@storybook/addon-storysource',
+    '@storybook/addon-knobs/register',
     '@storybook/addon-actions',
     '@storybook/addon-links',
-    '@storybook/addon-knobs',
     '@storybook/addon-viewport',
     '@storybook/addon-backgrounds',
     '@storybook/addon-contexts',

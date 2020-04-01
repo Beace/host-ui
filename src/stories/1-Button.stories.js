@@ -1,20 +1,30 @@
 import React from 'react';
 
-import { action } from '@storybook/addon-actions';
+import {
+  withKnobs,
+  text,
+  boolean,
+  radios
+} from "@storybook/addon-knobs";
 import Button from '../components/Button';
 
-export const Text = () => (
-  <>
-    <Button onClick={action('clicked')}>Hello Button</Button>
-    <Button onClick={action('clicked primary')} type="primary">Hello Button</Button>
-    <br />
-    <Button onClick={action('clicked primary')} inline={false}>Hello Button</Button>
-  </>
-);
+export const withButton = () => {
+  const label = text("Label", "Hello HostUI");
+  const disabled = boolean("Disabled", false);
+
+  const options = {
+    'default': 'default',
+    primary: 'primary',
+  };
+
+  const type = radios('Type', options, options.default);
+  return <Button type={type} disabled={disabled}>{label}</Button>;
+}
 
 export default {
   title: 'Button',
-  component: Button,
+  // component: Button,
+  decorators: [withKnobs]
 };
 
 

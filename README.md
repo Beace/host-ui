@@ -2,7 +2,7 @@
 
 Mobile Priority Component Library Based on React.
 
-![screenshot](https://images-manager.oss-cn-shanghai.aliyuncs.com/2019/Screen%20Shot%202019-07-31%20at%204.49.59%20PM.png)
+![screenshot](./docs/screenshot.png)
 
 ```bash
 npm install host-ui
