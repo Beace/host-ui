@@ -3,3 +3,4 @@ lib
 .docz
 .DS_Store
 package-lock.json
+storybook-static
