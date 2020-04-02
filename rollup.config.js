@@ -8,115 +8,53 @@ import { terser } from "rollup-plugin-terser";
 import packageJSON from "./package.json";
 
 const input = "./src/components/index.js";
-const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, ".min.js");
+// const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, ".min.js");
 
-export default [
-  // CommonJS
-  {
-    input,
-    output: {
-      file: minifyExtension(packageJSON.main),
-      format: "cjs"
-    },
-    plugins: [
-      babel({
-        exclude: "node_modules/**"
-      }),
-      less({
-        output: './lib/host-ui.css'
-      }),
-      external(),
-      resolve(),
-      commonjs(),
-      terser(),
-    ]
-  },
-  {
-    input,
-    output: {
-      file: packageJSON.browser,
-      format: "umd",
-      name: "reactSampleComponentsLibrary",
-      globals: {
-        react: "React",
-        "@emotion/styled": "styled",
-        "@emotion/core": "core"
-      }
-    },
-    plugins: [
-      babel({
-        exclude: "node_modules/**"
-      }),
-      less({
-        output: './lib/host-ui.css'
-      }),
-      external(),
-      resolve(),
-      commonjs()
-    ]
-  },
-  {
-    input,
-    output: {
-      file: minifyExtension(packageJSON.browser),
-      format: "umd",
-      name: "reactSampleComponentsLibrary",
-      globals: {
-        react: "React",
-        "@emotion/styled": "styled",
-        "@emotion/core": "core"
-      }
-    },
-    plugins: [
-      babel({
-        exclude: "node_modules/**"
-      }),
-      less({
-        output: './lib/host-ui.css'
-      }),
-      external(),
-      resolve(),
-      commonjs(),
-      terser()
-    ]
-  },
-  {
-    input,
-    output: {
-      file: packageJSON.module,
-      format: "es",
-      exports: "named"
-    },
-    plugins: [
-      babel({
-        exclude: "node_modules/**"
-      }),
-      less({
-        output: './lib/host-ui.css'
-      }),
-      external(),
-      resolve(),
-      commonjs()
-    ]
-  },
-  {
-    input,
-    output: {
-      file: minifyExtension(packageJSON.module),
-      format: "es",
-      exports: "named"
-    },
-    plugins: [
-      babel({
-        exclude: "node_modules/**"
-      }),
-      less({
-        output: './lib/host-ui.css'
-      }),
-      external(),
-      resolve(),
-      commonjs(),
-      terser()
-    ]
-  }
+const plugins = [
+  babel({
+    exclude: "node_modules/**"
+  }),
+  less({
+    output: './lib/host-ui.css'
+  }),
+  external(),
+  resolve(),
+  commonjs(),
+  terser(),
 ];
+
+const files = [{
+  file: packageJSON.main,
+  format: 'cjs',
+}, {
+  file: packageJSON.browser,
+  format: 'umd',
+}, {
+  file: packageJSON.module,
+  format: 'es'
+}];
+
+const config = files.map(file => {
+  const base = {
+    input,
+    output: {
+      file: file.file,
+      format: file.format
+    },
+    plugins
+  };
+
+  if (file.format === 'umd') {
+    base.output.name = 'hostUI';
+    base.output.globals = {
+      react: "React",
+      'react-dom': "ReactDOM"
+    }
+  } else if (file.format === 'es') {
+    base.output.exports = "named";
+  }
+  return base;
+});
+
+
+export default config;
