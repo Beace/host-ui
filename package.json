@@ -11,7 +11,7 @@
     "build:es": "NODE_ENV=production BABEL_ENV=es babel --root-mode upward src -d lib/es --ignore ./src/stories",
     "build": "rollup -c && npm run build:es",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -c .storybook -o build",
     "prepublishOnly": "npm run build"
   },
   "repository": {

@@ -4,3 +4,4 @@ lib
 .DS_Store
 package-lock.json
 storybook-static
+build
