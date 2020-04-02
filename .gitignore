@@ -5,3 +5,4 @@ lib
 package-lock.json
 storybook-static
 build
+.now
