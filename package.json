@@ -7,7 +7,9 @@
   "module": "lib/index.es.js",
   "scripts": {
     "start": "docz dev",
-    "build": "rm -rf lib && rollup -c",
+    "prebuild": "rm -rf lib",
+    "build:es": "NODE_ENV=production BABEL_ENV=es babel --root-mode upward src -d lib/es --ignore ./src/stories",
+    "build": "rollup -c && npm run build:es",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prepublishOnly": "npm run build"
@@ -27,9 +29,11 @@
   "homepage": "https://gitlab.com/BeAce/host-ui#readme",
   "peerDependencies": {
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "classnames": "^2.2.6"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "7.5.5",
     "@babel/plugin-proposal-class-properties": "7.5.5",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
@@ -65,10 +69,9 @@
     "rollup-plugin-less": "^1.1.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.2",
+    "rollup-plugin-progress": "^1.1.1",
     "rollup-plugin-terser": "^5.3.0",
     "style-loader": "^0.23.1"
   },
-  "dependencies": {
-    "classnames": "^2.2.6"
-  }
+  "dependencies": {}
 }
